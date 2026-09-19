@@ -1,0 +1,16 @@
+# Virtual environment — never commit
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Model cache (downloaded by sentence-transformers / HuggingFace)
+.cache/
+models/
+
+# Environment variables
+.env
+
+# Pytest
+.pytest_cache/

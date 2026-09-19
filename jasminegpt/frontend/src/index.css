@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ── Design tokens ─────────────────────────────────────────────────────────── */
+:root {
+  --bg-base: #0f1117;
+  --bg-sidebar: #161b27;
+  --bg-chat: #0f1117;
+  --bg-message-user: #1e2a3b;
+  --bg-message-assistant: #161b27;
+  --bg-input: #1e2535;
+  --bg-input-focus: #243048;
+  --bg-hover: #1a2236;
+  --bg-active: #1e2d47;
+  --bg-card: #1a2236;
+  --bg-badge: #0d1a2e;
+
+  --accent: #4f8ef7;
+  --accent-dim: #2d5cb8;
+  --accent-glow: rgba(79, 142, 247, 0.15);
+
+  --green: #3ecf8e;
+  --green-dim: rgba(62, 207, 142, 0.15);
+  --amber: #f59e0b;
+  --amber-dim: rgba(245, 158, 11, 0.15);
+  --red: #ef4444;
+  --red-dim: rgba(239, 68, 68, 0.12);
+
+  --text-primary: #e8ecf1;
+  --text-secondary: #8b95a8;
+  --text-muted: #56637a;
+  --text-accent: #4f8ef7;
+
+  --border: rgba(255,255,255,0.07);
+  --border-active: rgba(79, 142, 247, 0.4);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.5);
+
+  --sidebar-width: 280px;
+  --font: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ── Reset ─────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font);
+  font-size: 14px;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.18); }
+
+/* ── Utility ───────────────────────────────────────────────────────────────── */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); border: 0;
+}
