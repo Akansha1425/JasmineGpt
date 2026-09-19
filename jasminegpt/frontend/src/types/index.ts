@@ -49,6 +49,22 @@ export interface Conversation {
 
 export type LanguagePreference = 'auto' | 'en' | 'kn';
 
+/** Session-scoped farmer profile — derived from messages, never persisted */
+export interface FarmerProfile {
+  /** e.g. "Jasminum sambac" */
+  species?: string;
+  /** e.g. "Gundumalli" */
+  cultivar?: string;
+  /** e.g. "Karnataka" */
+  state?: string;
+  /** e.g. "Hassan" */
+  district?: string;
+  /** display label, e.g. "ಕನ್ನಡ" or "English" */
+  language?: string;
+  /** e.g. "garland making", "commercial export" */
+  farmingPurpose?: string;
+}
+
 export interface ChatResponse {
   conversationId: string;
   userMessageId: string;

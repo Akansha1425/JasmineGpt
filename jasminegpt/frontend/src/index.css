@@ -1,75 +1,164 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 
 /* ── Design tokens ─────────────────────────────────────────────────────────── */
 :root {
-  --bg-base: #0f1117;
-  --bg-sidebar: #161b27;
-  --bg-chat: #0f1117;
-  --bg-message-user: #1e2a3b;
-  --bg-message-assistant: #161b27;
-  --bg-input: #1e2535;
-  --bg-input-focus: #243048;
-  --bg-hover: #1a2236;
-  --bg-active: #1e2d47;
-  --bg-card: #1a2236;
-  --bg-badge: #0d1a2e;
+  --bg-base: #0B1020;
+  --bg-sidebar: #0e1426;
+  --bg-surface: #141c30;
+  --bg-surface-hover: #1c2640;
+  --bg-surface-active: #222e4c;
+  --bg-card: #151e33;
+  --bg-card-subtle: #18223a;
+  --bg-input: #12192c;
+  --bg-input-focus: #18223a;
+  --bg-message-user: #18253d;
+  --bg-badge: #111a2f;
 
-  --accent: #4f8ef7;
-  --accent-dim: #2d5cb8;
-  --accent-glow: rgba(79, 142, 247, 0.15);
+  /* Jasmine branding */
+  --primary-emerald: #10b981;
+  --primary-emerald-hover: #059669;
+  --primary-emerald-dim: rgba(16, 185, 129, 0.14);
+  --brand-pink: #ec4899;
+  --brand-pink-dim: rgba(236, 72, 153, 0.14);
+  --brand-pink-glow: rgba(236, 72, 153, 0.25);
 
-  --green: #3ecf8e;
-  --green-dim: rgba(62, 207, 142, 0.15);
-  --amber: #f59e0b;
-  --amber-dim: rgba(245, 158, 11, 0.15);
-  --red: #ef4444;
-  --red-dim: rgba(239, 68, 68, 0.12);
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
 
-  --text-primary: #e8ecf1;
-  --text-secondary: #8b95a8;
-  --text-muted: #56637a;
-  --text-accent: #4f8ef7;
+  --border: #232d46;
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-highlight: rgba(16, 185, 129, 0.35);
 
-  --border: rgba(255,255,255,0.07);
-  --border-active: rgba(79, 142, 247, 0.4);
-
-  --radius-sm: 6px;
-  --radius-md: 10px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-3xl: 28px;
+  --radius-pill: 9999px;
 
-  --shadow-sm: 0 1px 4px rgba(0,0,0,0.4);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.5);
-
-  --sidebar-width: 280px;
-  --font: 'Inter', system-ui, -apple-system, sans-serif;
+  --font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* ── Reset ─────────────────────────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* Light Theme */
+html.light, [data-theme="light"] {
+  --bg-base: #f8fafc;
+  --bg-sidebar: #f1f5f9;
+  --bg-surface: #ffffff;
+  --bg-surface-hover: #f1f5f9;
+  --bg-surface-active: #e2e8f0;
+  --bg-card: #ffffff;
+  --bg-card-subtle: #f8fafc;
+  --bg-input: #ffffff;
+  --bg-input-focus: #ffffff;
+  --bg-message-user: #e6f4ea;
+  --bg-badge: #eef2f6;
+
+  --primary-emerald: #059669;
+  --primary-emerald-hover: #047857;
+  --primary-emerald-dim: rgba(5, 150, 105, 0.12);
+  --brand-pink: #db2777;
+  --brand-pink-dim: rgba(219, 39, 119, 0.12);
+  --brand-pink-glow: rgba(219, 39, 119, 0.2);
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+
+  --border: #e2e8f0;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-highlight: rgba(5, 150, 105, 0.35);
+}
+
+/* ── Reset & Base ─────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 html, body, #root {
   height: 100%;
+  width: 100%;
   overflow: hidden;
 }
 
 body {
   font-family: var(--font);
-  font-size: 14px;
-  background: var(--bg-base);
+  font-size: 14.5px;
+  line-height: 1.6;
+  background-color: var(--bg-base);
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ── Scrollbar ─────────────────────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.18); }
+/* ── Custom Scrollbar ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.35);
+}
 
-/* ── Utility ───────────────────────────────────────────────────────────────── */
-.sr-only {
-  position: absolute; width: 1px; height: 1px;
-  padding: 0; margin: -1px; overflow: hidden;
-  clip: rect(0,0,0,0); border: 0;
+/* ── Animations ───────────────────────────────────────────────────────────── */
+@keyframes messageEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-message-fade-in {
+  animation: messageEntrance 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pulseDot {
+  0%, 80%, 100% {
+    transform: scale(0.65);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-pulse-dot-1 {
+  animation: pulseDot 1.4s infinite ease-in-out both;
+}
+.animate-pulse-dot-2 {
+  animation: pulseDot 1.4s infinite ease-in-out both;
+  animation-delay: 0.2s;
+}
+.animate-pulse-dot-3 {
+  animation: pulseDot 1.4s infinite ease-in-out both;
+  animation-delay: 0.4s;
+}
+
+/* ── Reduced Motion ───────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
